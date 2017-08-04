@@ -4,7 +4,7 @@ body {
 
 input {
   width: 120px;
-  height: 125px;
+  height: 128px;
   margin: 0px;
   font-size: 40px;
   font-weight: lighter;
@@ -17,15 +17,15 @@ input {
   color: white;
 }
 
-.total {
+.results {
   width: 357.5px;
   height: 125px;
   text-align: right;
 }
 
-.calculator-wrapper {
+.calculatorWrapper {
   width: 481.5px;
-  height: 629px;
+  height: 642px;
   background-color: #EEE7DD;
 }
 
