@@ -2,39 +2,38 @@ body {
   background-color: black;
 }
 
-button {
+input {
   width: 120px;
   height: 125px;
   margin: 0px;
-  font-size: 45px;
+  font-size: 40px;
   font-weight: lighter;
-  font-family: sans-serif;
+  font-family: Arial;
+  border-width: 1px;
+  border-color: #d2f6d4;
+  border-style: solid;
+  background-color: #52c856;
+  float: left;
+  color: white;
 }
 
-#total {
-  width: 368px;
+.total {
+  width: 357.5px;
   height: 125px;
   text-align: right;
-  padding-right: 20px;
-  background-color: #c1d0bf;
 }
 
 .calculator-wrapper {
-  width: 493px;
-  height: 627px;
+  width: 481.5px;
+  height: 629px;
   background-color: #EEE7DD;
 }
 
 .pemdas {
-  background-color: #95a986;
-}
-
-.numbers {
-  background-color: #C8A9AF;
+  background-color: #a0f7a3;
+  color: rgb(96, 119, 94);
 }
 
 .start-end {
-  background-color: #ffcccc;
+  height: 129px;
 }
-/*each button should be 100 px
-space between 10px */
