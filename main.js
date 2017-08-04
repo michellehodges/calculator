@@ -1,11 +1,10 @@
-// function calculator()
-//
-// 2. When you click the buttons, those values need to be printed out to results.
-
+// CONSTANTS FOR PROGRAM
 const arrayOfNums = document.querySelectorAll(".numbers");
 const arrayOfPemdas = document.querySelectorAll(".pemdas");
+const equalsButton = document.querySelector(".equals");
 
-//PRINT THE BUTTONS TO RESULTS WHEN ITS BEING CLICKED
+
+//FOR ALL BUTTONS, DO THIS WHEN CLICKED
 for (let i = 0; i < arrayOfNums.length; i++) {
   arrayOfNums[i].addEventListener('click', function () {
       printToResults(arrayOfNums[i].value);
@@ -14,30 +13,38 @@ for (let i = 0; i < arrayOfNums.length; i++) {
 
 for (let i = 0; i <arrayOfPemdas.length; i++) {
   arrayOfPemdas[i].addEventListener('click', function () {
-    printToResults(arrayOfPemdas[i].value)
+    printToResults(arrayOfPemdas[i].value);
+    parseNum();
+    assignOperator();
   })
 }
 
+if (equalsButton === true) {
+    runEquation ();
+}
+
+///////////////////////////FUNCTIONS HERE ////////////////////////////////////
+
+// PRINT BUTTON VALUES WHEN CLICKED
 function printToResults (number) {
   let resultsBox = document.querySelector(".results");
   resultsBox.value = resultsBox.value + number;
 }
 
-function unaryConversionVar () {
-  // console.log("hello")
-  // let unaryConversionVar=""
-  // unaryConversionVar = document.querySelector(".numbers").value;
-  //
-  // // if () {
-  // //
-  // // }
+// CONVERT STRING_NUMBERS TO NUMBERS AND ASSIGN TO NEW VAR
+function parseNum () {
+  // PARSEINT
 }
 
+//ASSIGN OPERATOR TO NEW variable
+function assignOperator() {
 
+}
 
-//When you click a pemdas button, those values need to be printed out to results.
+// RUN THE EQUATION OF VALUES IN resultsBox, PRINT TO resultsBox
+function runEquation () {
 
-// 3. When you click a number, then that value gets assigned to a temporary variable "unaryConversionVar".
+}
 
 
 // 4. When you click another number, then that value should get concatenated to the unaryConversionVar value.
