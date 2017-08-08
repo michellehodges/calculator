@@ -32,9 +32,11 @@ for (let i = 0; i <arrayOfPemdas.length; i++) {
 }
 
 equalsButton.addEventListener('click', function () {
+    document.querySelector(".results").value = "";
     parseNumAndAddToEquationArray();
     runEquation();
     printToResults(equationNumsArray[0]);
+    equationNumsArray = [];
 });
 
 ///////////////////////////FUNCTIONS HERE////////////////////////////////////
@@ -92,7 +94,6 @@ function runEquation() {
         equationNumsArray.splice(1,1);
       }
     }
-    equationNumsArray = [];
 }
 
 
