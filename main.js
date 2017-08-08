@@ -1,22 +1,27 @@
 ///////////////////////CONSTANTS FOR PROGRAM////////////////////////////////
 const arrayOfNums = document.querySelectorAll(".numbers");
 const arrayOfPemdas = document.querySelectorAll(".pemdas");
-const arrayOfDecimal = document.querySelector(".decimal")
+const decimal = document.querySelector(".decimal")
 const equalsButton = document.querySelector(".equals");
 let temporaryNumArray = [];
 let parsedNum;
-let equationNumsArray = [0, ];
+let equationNumsArray = [];
 let equationOperatorArray = [];
 let equationTotal = "";
+let newNum;
 
 /////////////FOR ALL BUTTONS, DO THIS WHEN CLICKED///////////////////////////
 for (let i = 0; i < arrayOfNums.length; i++) {
   arrayOfNums[i].addEventListener('click', function () {
     printToResults(arrayOfNums[i].value);
     moveNumsToTempArray(arrayOfNums[i].value);
-    moveDecimalToTempArray(arrayOfDecimal[i].value);
   });
 }
+
+decimal.addEventListener('click', function () {
+  printToResults(decimal.value);
+  moveDecimalToTempArray(decimal.value);
+})
 
 for (let i = 0; i <arrayOfPemdas.length; i++) {
   arrayOfPemdas[i].addEventListener('click', function () {
@@ -29,7 +34,7 @@ for (let i = 0; i <arrayOfPemdas.length; i++) {
 equalsButton.addEventListener('click', function () {
     parseNumAndAddToEquationArray();
     runEquation();
-    printToResults(equationTotal);
+    printToResults(equationNumsArray[0]);
 });
 
 ///////////////////////////FUNCTIONS HERE////////////////////////////////////
@@ -46,17 +51,14 @@ function moveNumsToTempArray (arrayvalue) {
 
 // MOVE CLICKED DECIMAL TO TEMPORARY ARRAY
 function moveDecimalToTempArray (arrayvalue) {
-  if (temporaryNumArray[temporaryNumArray.length - 1] === ".") {
-    return;
-  } else {
-    temporaryNumArray.push(arrayvalue)
-  }
+    temporaryNumArray.push(arrayvalue);
 }
 
 //WHEN ARRAY OF PEMDAS IS CLICKED 1) parseNumAndAddToEquationArray 3) assignOperator
 function parseNumAndAddToEquationArray () {
   parsedNum = temporaryNumArray.join("");
-  equationArray.push(parsedNum);
+  equationNumsArray.push(parseFloat(parsedNum));
+  temporaryNumArray = [];
 }
 
 // // ASSIGN OPERATOR TO EQUATION "OPERATOR" ARRAY. IF THE LAST VALUE OF EQ ARRAY IS NAN, THEN DELETE THAT LAST ELEMENT AND THEN PUSH.
@@ -65,36 +67,34 @@ function assignOperator(arrayvalue) {
     equationOperatorArray.splice(-1, 1);
     equationOperatorArray.push(arrayvalue);
   } else {
-  equationOperatorArray.push(arrayvalue);
+    equationOperatorArray.push(arrayvalue);
   }
 }
 
-// RUN THE EQUATION, with caveats
-function runEquation () {
-  for (i = 0; i < equationArray.length; i++) {
-    if ((equationArray[equationArray.length - 1] === NaN) || (equationArray[equationArray.length - 1] === ".")) {
-      equationArray.splice(-1, 1);
-
-    if ((equationArray[i] === NaN) || (equationArray[i] === ".")) {
-      switch (x, y) {
-          case x + "*" + y:
-            x*y;
-          case x + "/" + y:
-            x/y;
-      } else {
-        switch (x, y) {
-          case x + "+" + y:
-            x+y;
-          case x + "-" + y:
-            x-y;
-        }
+// RUN THE EQUATION
+function runEquation() {
+  for (j = 0; j < equationOperatorArray.length; j++) {
+      if (equationOperatorArray[j] === "*") {
+        newNum = equationNumsArray[0]*equationNumsArray[1]
+        equationNumsArray[0] = newNum;
+        equationNumsArray.splice(1,1);
+      } else if (equationOperatorArray[j] === "/") {
+        newNum = equationNumsArray[0]/equationNumsArray[1]
+        equationNumsArray[0] = newNum;
+        equationNumsArray.splice(1,1);
+      } else if (equationOperatorArray[j] === "+") {
+          newNum = equationNumsArray[0]+equationNumsArray[1]
+          equationNumsArray[0] = newNum;
+          equationNumsArray.splice(1,1);
+      } else if (equationOperatorArray[j] === "-") {
+        newNum = equationNumsArray[0]-equationNumsArray[1]
+        equationNumsArray[0] = newNum;
+        equationNumsArray.splice(1,1);
       }
     }
-    }
-  }
+    equationNumsArray = [];
 }
 
-  //So now, if I said 1 + 2 / 3, what I have is [0, 1, "+", 2, "/", 3]. I have to add all the values in that array.
 
 ////////////////////////////////NOTES//////////////////////////////////////////
 
