@@ -76,27 +76,33 @@ function assignOperator(arrayvalue) {
 
 // RUN THE EQUATION
 function runEquation() {
+  console.log(equationNumsArray)
   for (j = 0; j < equationOperatorArray.length; j++) {
       if (equationOperatorArray[j] === "*") {
-        newNum = equationNumsArray[0]*equationNumsArray[1]
-        equationNumsArray[0] = newNum;
-        equationNumsArray.splice(1,1);
+        newNum = equationNumsArray[j]*equationNumsArray[j+1]
+        equationNumsArray[j] = newNum;
+        equationNumsArray.splice(j+1,1);
       } else if (equationOperatorArray[j] === "/") {
-        newNum = equationNumsArray[0]/equationNumsArray[1]
-        equationNumsArray[0] = newNum;
-        equationNumsArray.splice(1,1);
-      } else if (equationOperatorArray[j] === "+") {
-          newNum = equationNumsArray[0]+equationNumsArray[1]
-          equationNumsArray[0] = newNum;
-          equationNumsArray.splice(1,1);
+        newNum = equationNumsArray[j]/equationNumsArray[j+1]
+        equationNumsArray[j] = newNum;
+        equationNumsArray.splice(j+1,1);
+      }
+  }
+  console.log(equationNumsArray)
+
+  for (j = 0; j < equationOperatorArray.length; j++) {
+      if (equationOperatorArray[j] === "+") {
+          newNum = equationNumsArray[j]+equationNumsArray[j+1]
+          equationNumsArray[j] = newNum;
+          equationNumsArray.splice(j+1,1);
       } else if (equationOperatorArray[j] === "-") {
-        newNum = equationNumsArray[0]-equationNumsArray[1]
-        equationNumsArray[0] = newNum;
-        equationNumsArray.splice(1,1);
+        newNum = equationNumsArray[j]-equationNumsArray[j+1]
+        equationNumsArray[j] = newNum;
+        equationNumsArray.splice(j+1,1);
       }
     }
+    console.log(equationNumsArray)
 }
-
 
 ////////////////////////////////NOTES//////////////////////////////////////////
 
