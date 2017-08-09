@@ -3,6 +3,7 @@ const arrayOfNums = document.querySelectorAll(".numbers");
 const arrayOfPemdas = document.querySelectorAll(".pemdas");
 const decimal = document.querySelector(".decimal")
 const equalsButton = document.querySelector(".equals");
+const resetButton = document.querySelector(".reset")
 let temporaryNumArray = [];
 let parsedNum;
 let equationNumsArray = [];
@@ -40,6 +41,10 @@ equalsButton.addEventListener('click', function () {
     equationOperatorArray = [];
 });
 
+resetButton.addEventListener('click', function () {
+  clearValues();
+})
+
 ///////////////////////////FUNCTIONS HERE////////////////////////////////////
 // PRINT BUTTON VALUES WHEN CLICKED
 function printToResults (number) {
@@ -76,7 +81,6 @@ function assignOperator(arrayvalue) {
 
 // RUN THE EQUATION
 function runEquation() {
-  console.log(equationNumsArray)
   for (j = 0; j < equationOperatorArray.length; j++) {
       if (equationOperatorArray[j] === "*") {
         newNum = equationNumsArray[j]*equationNumsArray[j+1]
@@ -88,7 +92,6 @@ function runEquation() {
         equationNumsArray.splice(j+1,1);
       }
   }
-  console.log(equationNumsArray)
 
   for (j = 0; j < equationOperatorArray.length; j++) {
       if (equationOperatorArray[j] === "+") {
@@ -101,7 +104,13 @@ function runEquation() {
         equationNumsArray.splice(j+1,1);
       }
     }
-    console.log(equationNumsArray)
+}
+
+
+//When you click the reset button, clear all values.
+function clearValues(){
+  let resultsBox = document.querySelector(".results");
+  resultsBox.value = "";
 }
 
 ////////////////////////////////NOTES//////////////////////////////////////////

@@ -25,12 +25,17 @@ input {
 
 .calculatorWrapper {
   width: 481.5px;
-  height: 642px;
+  height: 770px;
   background-color: #EEE7DD;
 }
 
 .pemdas {
   background-color: #a0f7a3;
+  color: rgb(96, 119, 94);
+}
+
+.previous, .next {
+  background-color: #a1e8f7;
   color: rgb(96, 119, 94);
 }
 
