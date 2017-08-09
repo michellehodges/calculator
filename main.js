@@ -37,6 +37,7 @@ equalsButton.addEventListener('click', function () {
     runEquation();
     printToResults(equationNumsArray[0]);
     equationNumsArray = [];
+    equationOperatorArray = [];
 });
 
 ///////////////////////////FUNCTIONS HERE////////////////////////////////////
