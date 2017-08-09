@@ -90,6 +90,14 @@ function runEquation() {
         newNum = equationNumsArray[j]/equationNumsArray[j+1]
         equationNumsArray[j] = newNum;
         equationNumsArray.splice(j+1,1);
+      } else if (equationOperatorArray[j] === "%") {
+          newNum = equationNumsArray[j]%equationNumsArray[j+1]
+          equationNumsArray[j] = newNum;
+          equationNumsArray.splice(j+1,1);
+      } else if (equationOperatorArray[j] === "√") {
+          newNum = Math.sqrt(equationNumsArray[j])
+          equationNumsArray[j] = newNum;
+          // equationNumsArray.splice(j,1);
       }
   }
 
